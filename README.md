@@ -124,3 +124,12 @@ The templating options. It takes an object with the following options:
 
 Options passed to the Markdown renderer of your descriptions.
 
+## Credits
+
+To [Kevin Renskers](https://github.com/kevinrenskers) for his excellent
+[raml2html](https://github.com/kevinrenskers/raml2html) which served as
+inspiration.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
