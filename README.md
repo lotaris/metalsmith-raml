@@ -3,6 +3,18 @@
 This is a plugin for [Metalsmith](http://metalsmith.io/) that parses [RAML API
 Specifications](http://raml.org/) and renders them using any templating engine.
 
+## Warning
+
+> The versions `2+` are not backward compatible with previous versions. 
+
+### Breakings
+
+* In fact, the `markdown` rendering is removed from this library. It is quite easy to enable the `markdown` rendering
+outside of the lib. You can configure the template engine with several helper functions. Therefore, it's easy peasy to 
+add the `highlighting` and `markdown` directly where you want in your templates.
+
+* The scoping is no more supported at the moment in the lib.
+
 ## Usage
 
 Options are explained below. If using the CLI for Metalsmith, metalsmith-raml
@@ -19,18 +31,21 @@ example:
     }
   },
   "section": "api",
-  "scope": "private",
   "template": {
     "engine": "jade",
     "file": "templates/raml/template.jade",
     "params": {
       "pretty": true
     },
+    helpers: {
+      highlight: function(code) {
+        return ...;
+      },
+      markdown: function(content) {
+        return ...;
+      }
+    },
     "minifyAssets": true
-  },
-  "marked": {
-    "gmf": true,
-    "smartypants": true
   }
 }
 ```
@@ -48,7 +63,6 @@ require('metalsmith')(__dirname)
       'myApi': { src: 'api/raml/index.raml', dest: 'api/reference' }
     },
     section: 'api',
-    scope: scope,
     template: {
       engine: 'jade',
       file: 'templates/raml/template.jade',
@@ -56,8 +70,7 @@ require('metalsmith')(__dirname)
         pretty: true
       },
       minifyAssets: minifyAssets
-    },
-    marked: markdown
+    }
   })
   .build();
 ```
@@ -96,14 +109,6 @@ would end up with this configuration:
 An optional attribute that will show up in the built file. Useful for menu 
 navigation if the documentation is part of a larger site.
 
-
-### `scope`
-
-Another attribute that is persisted into the build. In relation with 
-[metalsmith-scoping](https://github.com/lotaris/metalsmith-scoping), this 
-allows marking parts of the API documentation as private. Set to `private` or
-`public`.
-
 ### `template`
 
 The templating options. It takes an object with the following options:
@@ -119,10 +124,6 @@ The templating options. It takes an object with the following options:
    handy if you want to render multiple versions, such as a production and
    development version where assets inclusion in the template would differ
    depending on which environment you're building for.
-
-### `marked`
-
-Options passed to the Markdown renderer of your descriptions.
 
 ## Credits
 

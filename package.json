@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-raml",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Metalsmith plugin for easily adding a RAML tree.",
   "readmeFilename": "README.md",
   "homepage": "https://github.com/lotaris/metalsmith-raml",
@@ -16,8 +16,6 @@
   "dependencies": {
     "async": "^0.9.0",
     "consolidate": "^0.10.0",
-    "highlight.js": "^8.2.0",
-    "marked": "^0.3.2",
     "raml-parser": "^0.8.7",
     "underscore": "^1.7.0",
     "yamljs": "^0.1.6"
