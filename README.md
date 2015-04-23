@@ -36,7 +36,7 @@ example:
     "file": "templates/raml/template.jade",
     "params": {
       "pretty": true
-    }
+    },
     "minifyAssets": true
   }
 }
