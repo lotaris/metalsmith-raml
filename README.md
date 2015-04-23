@@ -36,15 +36,7 @@ example:
     "file": "templates/raml/template.jade",
     "params": {
       "pretty": true
-    },
-    helpers: {
-      highlight: function(code) {
-        return ...;
-      },
-      markdown: function(content) {
-        return ...;
-      }
-    },
+    }
     "minifyAssets": true
   }
 }
@@ -68,6 +60,14 @@ require('metalsmith')(__dirname)
       file: 'templates/raml/template.jade',
       params: {
         pretty: true
+      },
+      helpers: {
+        highlight: function(code) {
+          return ...;
+        },
+        markdown: function(content) {
+          return ...;
+        }
       },
       minifyAssets: minifyAssets
     }
